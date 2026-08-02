@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>Statelet - Agent Runtime Data Layer</title>
+    <meta name="description" content="Statelet is an Apache 2.0 agent runtime data layer. One Rust engine gives production AI agents durable memory, context, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, and a management UI. 91.6% on LongMemEval-S." />
+    <meta name="keywords" content="Statelet, agent runtime data layer, AI agent runtime, agent state database, memory query language, SQL-like memory query, self-hosted AI memory, enterprise AI memory, agent memory database, LLM agent memory, context engineering, temporal graph database, causal graph, vector database, DiskHNSW, SPFresh, openCypher, graph RAG, CDC, Rust database, Raft consensus, Redis compatible, namespace database isolation, RBAC, ONNX embeddings, Apache 2.0" />
+    <meta name="author" content="stateletlab" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://statelet.ai" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://statelet.ai" />
+    <meta property="og:title" content="Statelet - Agent Runtime Data Layer" />
+    <meta property="og:description" content="One Rust engine for AI agent memory, context, and runtime state: an openCypher-style memory query language, vector recall, temporal graphs, CDC, Raft, Redis, and local ONNX embeddings." />
+    <meta property="og:site_name" content="Statelet" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://statelet.ai/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Statelet - Agent Runtime Data Layer" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Statelet - Agent Runtime Data Layer" />
+    <meta name="twitter:description" content="Self-hosted runtime data for AI agents: durable memory, context, state snapshots, a memory query language, vector recall, temporal graphs, CDC, Raft, Redis, and local embeddings." />
+    <meta name="twitter:image" content="https://statelet.ai/og-image.png" />
+    <meta name="twitter:image:alt" content="Statelet - Agent Runtime Data Layer" />
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "stateletlab",
+      "url": "https://github.com/stateletlab",
+      "logo": "https://statelet.ai/favicon.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "stateletlab@gmail.com",
+        "contactType": "technical support"
+      },
+      "sameAs": [
+        "https://github.com/stateletlab/statelet"
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: WebSite with search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Statelet",
+      "url": "https://statelet.ai",
+      "description": "Agent runtime data layer for memory, context, state snapshots, an openCypher-style memory query language, vector recall, temporal graph traversal, CDC, Raft, and Redis",
+      "publisher": {
+        "@type": "Organization",
+        "name": "stateletlab"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Statelet",
+      "alternateName": ["Statelet", "Statelet Agent Memory Database", "Statelet Agent State Database"],
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Agent Runtime Data Layer",
+      "operatingSystem": "Linux, macOS, Docker, Kubernetes",
+      "description": "An Apache 2.0 agent runtime data layer written in Rust. Statelet gives production AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, RBAC, and a management UI.",
+      "url": "https://statelet.ai",
+      "downloadUrl": "https://github.com/stateletlab/statelet",
+      "installUrl": "https://github.com/stateletlab/statelet",
+      "softwareVersion": "latest",
+      "license": "https://opensource.org/licenses/Apache-2.0",
+      "isAccessibleForFree": true,
+      "programmingLanguage": ["Rust"],
+      "runtimePlatform": "Tokio async runtime",
+      "author": {
+        "@type": "Organization",
+        "name": "stateletlab",
+        "url": "https://github.com/stateletlab"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": [
+        "Unified runtime data engine for memory, context, state, vector recall, temporal graph, and triple-store rows",
+        "OpenCypher-style memory query language for SQL-like declarative memory recall",
+        "DiskHNSW and SPFresh vector search with product quantization",
+        "Server-side memory engine with temporal supersedes chains",
+        "openCypher-style recall with AS OF time travel and graph-RAG procedures",
+        "Namespace and database multi-tenancy with physically scoped data",
+        "Durable SubscribeCommitted CDC feed keyed on Raft log offsets",
+        "Atomic single-shard batches and optional cross-shard transactions",
+        "LSM-tree storage engine with MVCC, bloom filters, and block cache",
+        "Per-shard Raft consensus plus separate metadata Raft plane",
+        "Redis RESP2 protocol compatible",
+        "SDKs for Python, Rust, Go, Java, and C++",
+        "npm memory plugin for AI coding agents",
+        "React management console with namespaces, databases, graph queries, KV, users, and metrics"
+      ],
+      "softwareRequirements": "Rust 1.85+",
+      "storageRequirements": "Varies by dataset",
+      "releaseNotes": "LongMemEval-S: 91.6% end-to-end accuracy, 99.0% hit@5 retrieval recall, 0.937 recall@5"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQ for rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Statelet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet is an Apache 2.0 agent runtime data layer for production AI systems, written in Rust. It unifies durable memory, runtime state, declarative memory queries, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, and a management UI in one engine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What memory accuracy does Statelet reach?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet's server-side memory engine was evaluated on LongMemEval-S and reached 91.6% full-pipeline accuracy over 500 questions, with 99.0% hit@5 retrieval recall. Search uses local embeddings and vector plus graph retrieval; the LLM is only used during ingestion when enabled."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is temporal graph recall in Statelet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet stores memories as graph nodes and temporal edges with validity windows. You can query what was true at a specific time with AS OF, expand semantic vector hits through graph relationships, and follow supersedes chains for updated or conflicting memories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What languages and protocols does Statelet support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet provides gRPC SDKs for Python (3.9+), Rust (1.70+), Go (1.21+), Java (17+), and C++ (17+), plus an npm memory plugin for coding agents. It also natively supports the Redis RESP2 protocol, so existing Redis clients can connect directly on port 6379."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Statelet isolate enterprise tenants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet isolates tenants with a namespace to database hierarchy. The selected scope is baked into physical key, vector index, and graph names before shard routing, so agents or end users can own identical logical names without sharing a physical key space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What vector search capabilities does Statelet have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet includes DiskHNSW and SPFresh vector search backends with L2, cosine, and inner-product distance metrics. It supports Product Quantization and Scalar Quantization for memory-efficient search, sparse hybrid retrieval, graph-RAG expansion, and distributed fan-out search across cluster nodes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Statelet deployed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet can be run from source with three services: metadata_service, raft_engine with the data-node feature, and gateway. It also ships Kubernetes manifests and macOS launchd service definitions. The topology consists of stateless gateways, a metadata Raft plane, and sharded data nodes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What interfaces does Statelet expose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Statelet exposes the Statelet gRPC service, a Redis RESP2-compatible TCP server, REST management APIs on the gateway, a React management UI, and a durable SubscribeCommitted CDC feed for catch-up and live-tail integrations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Statelet open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Statelet is fully open source under the Apache 2.0 license. The source code is available on GitHub at github.com/stateletlab/statelet."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD: HowTo for getting started -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Get Started with Statelet",
+      "description": "Start Statelet locally with the metadata service, data node, and gateway.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Build from source",
+          "text": "Clone the repository and build the data-node binary with Rust: cargo build --release --features data-node"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Start the services",
+          "text": "Run cargo run --bin metadata_service, then cargo run --features data-node --bin raft_engine -- /tmp/statelet 127.0.0.1:7379, then cargo run --bin gateway"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Connect with a client",
+          "text": "Use the Python SDK (pip install statelet) or connect via redis-cli on port 6379"
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BSNycd43.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dxm4p_Nf.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- SEO: Static content for crawlers that don't execute JavaScript -->
+    <noscript>
+	      <h1>Statelet - Agent Runtime Data Layer</h1>
+	      <p>Statelet is an Apache 2.0 distributed database written in Rust. It gives AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph recall, CDC, Raft consensus, Redis compatibility, and local ONNX embeddings.</p>
+
+	      <h2>Statelet Features</h2>
+	      <ul>
+	        <li><strong>Unified Runtime Data Engine</strong> - Memory, context, state snapshots, vector recall, temporal graph, and triple-store rows share one Rust engine and transaction model.</li>
+	        <li><strong>Memory Query Language</strong> - Query agent memory declaratively with openCypher-style syntax, including vector search, graph expansion, and AS OF time travel.</li>
+	        <li><strong>LSM-Tree Storage Engine</strong> - Concurrent skip-list MemTable, prefix-compressed SST files, bloom filters, sharded LRU block cache, leveled compaction.</li>
+	        <li><strong>DiskHNSW / SPFresh Vector Search</strong> - Dense, sparse hybrid, graph-RAG, and quantized vector retrieval with local ONNX embeddings.</li>
+	        <li><strong>Temporal Graph Recall</strong> - Time-aware edges, AS OF queries, supersedes chains, and graph expansion for explainable memory.</li>
+	        <li><strong>Multi-Tenancy</strong> - Namespace and database scoping physically isolates keys, indexes, and graphs for every tenant or agent.</li>
+	        <li><strong>CDC Feed</strong> - Durable SubscribeCommitted stream keyed on Raft log offsets for catch-up and live-tail integrations.</li>
+	        <li><strong>Raft Distributed Consensus</strong> - Separate metadata and per-shard data Raft groups for production topology.</li>
+	        <li><strong>Redis Protocol Compatible</strong> - RESP2-compatible TCP server. Any Redis client can connect directly.</li>
+	        <li><strong>Multi-Language SDKs</strong> - Official gRPC clients for Python 3.9+, Rust 1.70+, Go 1.21+, Java 17+, and C++ 17+.</li>
+	        <li><strong>Management Web Console</strong> - Namespaces, databases, graph queries, KV operations, user management, and Prometheus metrics.</li>
+	      </ul>
+
+      <h2>Architecture</h2>
+	      <p>Three-tier distributed architecture: stateless Gateway (gRPC :9379, HTTP :9380, Redis :6379) routing to a Metadata Plane (Raft consensus for namespace/database registry, shard map, column families, and node registry) and Data Plane (ShardEngine per node with LSM-tree, DiskHNSW/SPFresh vector search, temporal GraphSST, and per-shard Raft).</p>
+
+	      <h2>Performance</h2>
+		      <h3>LongMemEval-S memory evaluation</h3>
+	      <ul>
+	        <li>Full-pipeline accuracy: 91.6% over 500 questions</li>
+		        <li>Retrieval-only hit@5: 99.0%; recall@5: 93.7%; MRR: 93.8%</li>
+		        <li>span_hit@5: 90.0%; span_recall@5: 78.9%; top-1 similarity: 99.4%</li>
+	        <li>End-to-end overall: 458 / 500 correct; strongest categories are single-session-assistant at 98.2% and single-session-user at 97.1%</li>
+	        <li>Search is pure vector plus graph retrieval; LLM extraction is ingestion-time only when enabled</li>
+	      </ul>
+	      <p>Open source and Apache 2.0 licensed.</p>
+
+	      <h2>Agent Memory</h2>
+	      <p>Statelet's gateway extracts structured facts from conversations, detects conflicts through vector similarity, resolves updates with temporal supersedes edges, and stores each fact with temporal metadata. Agents can recall memories with vector search, hybrid dense+sparse search, graph-RAG expansion, Personalized PageRank, and AS OF time travel.</p>
+
+      <h2>SDKs &amp; Protocols</h2>
+      <p>Official gRPC clients: Python 3.9+, Rust 1.70+, Go 1.21+, Java 17+, C++ 17+. Redis RESP2 protocol compatible — connect with redis-cli or any Redis client library.</p>
+
+      <h2>Deployment</h2>
+      <p>Single Node (cargo run), Docker (multi-stage build), Kubernetes (StatefulSet with 3+ data nodes), macOS launchd.</p>
+
+      <p>Open source, Apache 2.0 licensed. <a href="https://github.com/stateletlab/statelet">View on GitHub</a>.</p>
+    </noscript>
+  </body>
+</html>
