@@ -1,0 +1,7 @@
+name = "statelet-counter"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "COUNTER"
+id = "f4e281b9f91147a4933df1ebcb0d7d45"

@@ -1,0 +1,117 @@
+import { motion } from 'framer-motion'
+import { ArrowRight, Star, Heart } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <section aria-label="Statelet - Agent Runtime Data Layer" className="relative pt-28 md:pt-32 pb-10 md:pb-12 bg-surface">
+      <div className="relative max-w-[980px] mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <span className="inline-block mb-7 rounded-full border border-border bg-surface-light px-3.5 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
+            Apache&nbsp;2.0 · Written in Rust
+          </span>
+
+          <h1 className="text-[42px] md:text-[68px] font-medium text-text leading-[1.08] mb-6">
+            The Agent Runtime
+            <span className="block text-primary italic">Data Layer.</span>
+          </h1>
+
+          <p className="text-lg md:text-[19px] text-text-muted max-w-[620px] mx-auto mb-8 leading-[1.6] font-normal">
+            Give production AI agents durable memory, context, and state without sending
+            data to third-party clouds. Query memory declaratively with an openCypher-style
+            memory query language, backed by vector recall, temporal graphs, runtime snapshots,
+            CDC, and Raft replication.
+          </p>
+
+          {/* SEO-rich hidden content for crawlers */}
+          <div className="sr-only">
+            <h2>Statelet: Agent Runtime Data Layer</h2>
+            <p>
+              Statelet is an Apache 2.0 open-source distributed database written in Rust.
+              It gives AI agents durable memory, context versions, runtime state snapshots,
+              an openCypher-style memory query language, vector recall, temporal graph traversal,
+              causal memory chains, multi-tenant namespace/database isolation, CDC, Raft consensus,
+              Redis RESP2 compatibility, and a management UI. Statelet's server-side memory engine
+              scores 91.6% on LongMemEval-S and runs search locally with ONNX embeddings.
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="https://github.com/stateletlab/statelet-longmemeval" target="_blank" rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary hover:bg-primary-dark text-white text-sm font-medium transition-colors">
+                View on GitHub
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+              <a href="#features"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-border text-sm font-medium text-text hover:border-primary hover:text-primary transition-colors">
+                Learn more
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <a
+                href="https://github.com/stateletlab/statelet-longmemeval"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-text-muted hover:text-primary transition-colors"
+              >
+                <Star className="w-4 h-4" />
+                Star
+              </a>
+              <span className="w-px h-4 bg-border" aria-hidden="true" />
+              <a
+                href="https://github.com/stateletlab/statelet-longmemeval"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-[13px] font-medium text-text-muted hover:text-primary transition-colors"
+              >
+                <Heart className="w-4 h-4" />
+                Sponsor
+              </a>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Code preview */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="mt-8 max-w-[640px] mx-auto"
+        >
+          {/* Deploy in minutes */}
+          <div className="mb-5 text-center">
+            <p className="text-sm text-text-muted">
+              Deploy in minutes —{' '}
+              <code className="px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
+                pip install statelet
+              </code>
+              {' '}
+              <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">
+                Available
+              </span>
+            </p>
+          </div>
+
+          <div className="rounded-xl bg-surface-dark overflow-hidden border border-surface-dark">
+            <div className="flex items-center gap-2 px-5 py-3 border-b border-white/10">
+              <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#9a9089]">agent_memory.py</span>
+            </div>
+            <pre className="p-6 text-left text-[13px] font-mono leading-[1.7] overflow-x-auto text-[#ede6dc]">
+	              <code>{`from statelet import StateletClient
+
+with StateletClient("127.0.0.1:7379") as client:
+    client.put(b"agent:pref:editor", b"vim")
+    print(client.get(b"agent:pref:editor"))
+    client.delete(b"agent:pref:editor")`}</code>
+            </pre>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Self-hosted fonts (no third-party CDN requests) — latin subsets only */
+@import "@fontsource/newsreader/latin-400.css";
+@import "@fontsource/newsreader/latin-500.css";
+@import "@fontsource/newsreader/latin-600.css";
+@import "@fontsource/newsreader/latin-400-italic.css";
+@import "@fontsource-variable/public-sans/wght.css";
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
+
+/*
+  Warm Technical
+  ---------------------------------------------------------------------------
+  Ground is a warm off-white, not cream: enough yellow to read as paper,
+  not so much that it turns beige. Clay carries every emphasis; ink-teal is
+  the second categorical color so the palette does not go monotone warm.
+  Headings are serif, everything operational (labels, code, numbers in
+  tables) is sans or mono. That split is what keeps it from reading as a blog.
+*/
+@theme {
+  /* clay — the single accent */
+  --color-primary: #b4552f;
+  --color-primary-dark: #93401f;
+  --color-primary-light: #c9714d;
+
+  /* moss — availability / success only */
+  --color-accent: #4f6f52;
+  --color-accent-dark: #3d5940;
+
+  /* grounds */
+  --color-surface: #faf8f4;
+  --color-surface-light: #f3efe7;
+  --color-surface-lighter: #eae4d8;
+  --color-surface-card: #ffffff;
+  --color-surface-dark: #2a2521;
+
+  /* ink */
+  --color-text: #2a2521;
+  --color-text-muted: #7a716a;
+  --color-text-bright: #16120f;
+  --color-text-light: #9a9089;
+
+  /* rules — low contrast, warm */
+  --color-border: #ded4c5;
+  --color-border-light: #ebe4d8;
+
+  /* semantic */
+  --color-success: #4f6f52;
+  --color-warning: #b07d2b;
+
+  /* second categorical color, replaces the old purple */
+  --color-purple: #3f6670;
+  --color-rust: #8f4523;
+
+  --font-sans: 'Public Sans Variable', 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Newsreader', 'Iowan Old Style', Charter, Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-text font-sans antialiased;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /*
+    Serif for display type only. Components still set their own size and
+    weight; this just swaps the family and dials tracking back, since
+    Newsreader does not need the negative tracking the old sans did.
+  */
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.012em;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  h1 {
+    letter-spacing: -0.02em;
+  }
+
+  /* h4 and below are UI labels, not display type — keep them sans */
+  h4, h5, h6 {
+    font-family: var(--font-sans);
+  }
+
+  code, pre, kbd {
+    font-family: var(--font-mono);
+    font-feature-settings: 'liga' 0;
+  }
+
+  /* Figures that line up in columns */
+  table, .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    @apply bg-primary/15 text-text-bright;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  /* Uppercase section eyebrows — used by every section header */
+  .eyebrow {
+    @apply font-sans text-[11px] font-semibold uppercase text-primary;
+    letter-spacing: 0.14em;
+  }
+}
