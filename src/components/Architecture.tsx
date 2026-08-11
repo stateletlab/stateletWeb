@@ -26,7 +26,7 @@ export default function Architecture() {
               {/* Clients */}
               <div className="text-center">
                 <div className="inline-flex items-center gap-3 flex-wrap justify-center">
-                  {['Python', 'Rust', 'Go', 'Java', 'C++', 'Redis CLI'].map(sdk => (
+                  {['Python', 'Node.js', 'Rust', 'Go', 'Java', 'C++', 'Redis CLI'].map(sdk => (
                     <span key={sdk} className="px-3 py-1.5 rounded-full bg-surface-light text-text-muted text-xs font-medium">
                       {sdk}
                     </span>

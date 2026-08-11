@@ -10,7 +10,7 @@ Statelet uses a **three-tier distributed architecture** designed for horizontal 
 ```
 ┌─────────────────────────────────────────────────┐
 │                  Client SDKs                     │
-│         Python  Rust  Go  Java  C++              │
+│      Python  Node.js  Rust  Go  Java  C++        │
 │                  Redis CLI                        │
 └────────────────────┬────────────────────────────┘
                      │
