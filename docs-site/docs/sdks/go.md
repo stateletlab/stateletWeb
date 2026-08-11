@@ -19,7 +19,7 @@ code-generation step.
 The module path is `github.com/stateletlab/statelet-sdk/go`. Because the module
 is nested in a polyglot repository, its releases are tagged `go/vX.Y.Z` rather
 than `vX.Y.Z` — pin a version with
-`go get github.com/stateletlab/statelet-sdk/go@v0.1.3`.
+`go get github.com/stateletlab/statelet-sdk/go@v0.1.4`.
 
 :::note Moved
 Through v0.1.x this module lived at `github.com/stateletlab/statelet/sdk/go`.

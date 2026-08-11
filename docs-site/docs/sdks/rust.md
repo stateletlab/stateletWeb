@@ -17,7 +17,7 @@ tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
 
 Or `cargo add statelet-sdk tokio --features tokio/rt-multi-thread,tokio/macros`.
 The crate is published on [crates.io](https://crates.io/crates/statelet-sdk);
-the current release is 0.1.3.
+the current release is 0.1.4.
 
 :::note Renamed
 The crate was `statelet-client` while the SDKs lived under `sdk/` in the engine

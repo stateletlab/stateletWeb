@@ -6,7 +6,7 @@ title: Node.js
 # Node.js SDK
 
 Official TypeScript-first Node.js client for Statelet. Published on npm as
-`statelet-sdk`; the current release is 0.1.3.
+`statelet-sdk`; the current release is 0.1.4.
 
 ## Installation
 

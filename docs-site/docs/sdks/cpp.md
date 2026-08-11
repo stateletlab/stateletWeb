@@ -22,7 +22,7 @@ consumed as source. The easiest route is `FetchContent`:
 include(FetchContent)
 FetchContent_Declare(statelet_sdk
   GIT_REPOSITORY https://github.com/stateletlab/statelet-sdk.git
-  GIT_TAG        cpp-v0.1.3
+  GIT_TAG        cpp-v0.1.4
   SOURCE_SUBDIR  cpp)
 FetchContent_MakeAvailable(statelet_sdk)
 

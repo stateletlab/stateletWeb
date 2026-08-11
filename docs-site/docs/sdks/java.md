@@ -15,14 +15,14 @@ Official Java client for Statelet. Requires Java 17+.
 <dependency>
     <groupId>ai.statelet</groupId>
     <artifactId>statelet-sdk</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'ai.statelet:statelet-sdk:0.1.3'
+implementation 'ai.statelet:statelet-sdk:0.1.4'
 ```
 
 Published to Maven Central. Requires Maven 3.8+ to build against.

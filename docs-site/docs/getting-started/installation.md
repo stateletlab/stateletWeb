@@ -15,7 +15,7 @@ Statelet ships as two separate things:
 | **Server** | `statelet` | The three service binaries, `statelet-cli`, the `statelet-cluster` launcher, and the admin UI |
 | **Client** | `statelet-sdk` | The client library for your language — no server binaries |
 
-Current release: **server 0.1.3**, **SDKs 0.1.3**.
+Current release: **server 0.1.4**, **SDKs 0.1.4**.
 
 ## Install the Server
 
@@ -84,14 +84,14 @@ Download from the
 [latest release](https://github.com/stateletlab/statelet-longmemeval/releases/latest):
 
 ```bash
-VERSION=0.1.3
+VERSION=0.1.4
 PLATFORM=darwin-arm64   # or darwin-amd64, linux-amd64, linux-arm64
 curl -LO "https://github.com/stateletlab/statelet-longmemeval/releases/download/v${VERSION}/statelet-${VERSION}-${PLATFORM}.tar.gz"
 tar xzf "statelet-${VERSION}-${PLATFORM}.tar.gz"
 ./statelet-cluster start
 ```
 
-On Windows, use `statelet-0.1.3-windows-amd64.msi` or the matching `.zip`.
+On Windows, use `statelet-0.1.4-windows-amd64.msi` or the matching `.zip`.
 `.deb` and `.rpm` files are attached to the release too, if you would rather
 install one directly than add the repository.
 
@@ -210,14 +210,14 @@ Requires Rust 1.70+. See the [Rust SDK](/sdks/rust).
 <dependency>
     <groupId>ai.statelet</groupId>
     <artifactId>statelet-sdk</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.4</version>
 </dependency>
 ```
 
 Or with Gradle:
 
 ```groovy
-implementation 'ai.statelet:statelet-sdk:0.1.3'
+implementation 'ai.statelet:statelet-sdk:0.1.4'
 ```
 
 Requires Java 17+. See the [Java SDK](/sdks/java).
@@ -232,7 +232,7 @@ consumed as source:
 include(FetchContent)
 FetchContent_Declare(statelet_sdk
   GIT_REPOSITORY https://github.com/stateletlab/statelet-sdk.git
-  GIT_TAG        cpp-v0.1.3
+  GIT_TAG        cpp-v0.1.4
   SOURCE_SUBDIR  cpp)
 FetchContent_MakeAvailable(statelet_sdk)
 target_link_libraries(my_app PRIVATE statelet_sdk)

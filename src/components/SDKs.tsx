@@ -6,7 +6,7 @@ const sdks = [
   { name: 'Go', version: '1.21+', install: 'go get .../statelet-sdk/go' },
   { name: 'Rust', version: '1.70+', install: 'cargo add statelet-sdk' },
   { name: 'Java', version: '17+', install: 'ai.statelet:statelet-sdk' },
-  { name: 'C++', version: '17+', install: 'FetchContent → cpp-v0.1.3' },
+  { name: 'C++', version: '17+', install: 'FetchContent → cpp-v0.1.4' },
 ]
 
 export default function SDKs() {
