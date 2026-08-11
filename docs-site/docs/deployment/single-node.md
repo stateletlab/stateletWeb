@@ -7,31 +7,51 @@ title: Single Node
 
 The local development topology runs all three Statelet services on one machine:
 
-- `metadata_service` — metadata Raft plane
-- `raft_engine` — data node / ShardEngine
-- `gateway` — client gRPC, Redis RESP2, REST management API, and WebUI
+- `statelet-metadata` (`metadata_service`) — metadata Raft plane
+- `statelet-datanode` (`raft_engine`) — data node / ShardEngine
+- `statelet-gateway` (`gateway`) — client gRPC, Redis RESP2, REST management API, and WebUI
 
-## Build
+The names in parentheses are the crate binary names used when running from a
+source checkout; the packages install them under the `statelet-` prefix.
+
+## Install
 
 ```bash
-git clone https://github.com/stateletlab/statelet-longmemeval.git
-cd statelet
-cargo build --release --features data-node
+brew install stateletlab/statelet/statelet
 ```
+
+Or `pip install statelet`, or an `apt` / `dnf` package — see
+[Installation](/getting-started/installation) for every channel.
 
 ## Run
 
-Start each service in a separate terminal:
+The launcher starts all three services and waits for each port to answer:
+
+```bash
+statelet-cluster start --nodes 1
+statelet-cluster status
+statelet-cluster stop
+```
+
+To control the services individually, run each in its own terminal:
+
+```bash
+statelet-metadata
+```
+
+```bash
+statelet-datanode /tmp/statelet 127.0.0.1:7379
+```
+
+```bash
+statelet-gateway
+```
+
+From a source checkout, the equivalents are:
 
 ```bash
 cargo run --bin metadata_service
-```
-
-```bash
 cargo run --features data-node --bin raft_engine -- /tmp/statelet 127.0.0.1:7379
-```
-
-```bash
 cargo run --bin gateway
 ```
 
@@ -63,15 +83,24 @@ print(db.get('test'))
 
 ## Data Directories
 
-The example above stores the data node files under `/tmp/statelet`. For persistent local services, use the launchd installer from the Statelet repository:
+Run individually as above, the data node files land in `/tmp/statelet`.
+`statelet-cluster` instead keeps everything under `~/.statelet/cluster`, which
+`STATELET_DATA_DIR` overrides.
 
-```bash
-cargo build --release --features data-node
-sudo bash scripts/launchd-install.sh
-launchctl list | grep statelet
-```
+## Running as a Background Service
 
-The installer creates service binaries under `/usr/local/bin/statelet-{metadata,datanode,gateway}` and data/log directories under `/usr/local/var/statelet` and `/usr/local/var/log/statelet`.
+The install channel decides how the services are supervised:
+
+| Installed via | Supervisor | Commands |
+|---|---|---|
+| Homebrew | `brew services` | `brew services start\|stop statelet` |
+| `.deb` / `.rpm` | systemd (enabled on install) | `systemctl status\|restart statelet`, `journalctl -u statelet -f` |
+| pip / tarball | none — use `statelet-cluster` | `statelet-cluster start\|status\|stop` |
+
+Homebrew logs to `$(brew --prefix)/var/log/statelet/cluster.log` and keeps data
+under `$(brew --prefix)/var/statelet`. The `.deb` and `.rpm` packages install the
+binaries to `/usr/bin`, the admin UI to `/usr/share/statelet/ui`, and data to
+`/var/lib/statelet`.
 
 :::caution
 Single-machine deployment is intended for development and testing. Use Kubernetes or a multi-node deployment for production fault tolerance.

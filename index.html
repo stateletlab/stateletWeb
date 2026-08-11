@@ -82,12 +82,12 @@
       "alternateName": ["Statelet", "Statelet Agent Memory Database", "Statelet Agent State Database"],
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Agent Runtime Data Layer",
-      "operatingSystem": "Linux, macOS, Docker, Kubernetes",
+      "operatingSystem": "Linux, macOS, Windows, Docker, Kubernetes",
       "description": "An Apache 2.0 agent runtime data layer written in Rust. Statelet gives production AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, RBAC, and a management UI.",
       "url": "https://statelet.ai",
       "downloadUrl": "https://github.com/stateletlab/statelet-longmemeval",
-      "installUrl": "https://github.com/stateletlab/statelet-longmemeval",
-      "softwareVersion": "latest",
+      "installUrl": "https://statelet.ai/docs/getting-started/installation",
+      "softwareVersion": "0.1.3",
       "license": "https://opensource.org/licenses/Apache-2.0",
       "isAccessibleForFree": true,
       "programmingLanguage": ["Rust"],
@@ -115,11 +115,11 @@
         "LSM-tree storage engine with MVCC, bloom filters, and block cache",
         "Per-shard Raft consensus plus separate metadata Raft plane",
         "Redis RESP2 protocol compatible",
-        "SDKs for Python, Rust, Go, Java, and C++",
+        "SDKs for Python, Node.js, Go, Rust, Java, and C++",
         "npm memory plugin for AI coding agents",
         "React management console with namespaces, databases, graph queries, KV, users, and metrics"
       ],
-      "softwareRequirements": "Rust 1.85+",
+      "softwareRequirements": "None for packaged installs; Rust 1.85+ to build from source",
       "storageRequirements": "Varies by dataset",
       "releaseNotes": "LongMemEval-S: 91.6% end-to-end accuracy, 99.0% hit@5 retrieval recall, 0.937 recall@5"
     }
@@ -160,7 +160,7 @@
           "name": "What languages and protocols does Statelet support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Statelet provides gRPC SDKs for Python (3.9+), Rust (1.70+), Go (1.21+), Java (17+), and C++ (17+), plus an npm memory plugin for coding agents. It also natively supports the Redis RESP2 protocol, so existing Redis clients can connect directly on port 6379."
+            "text": "Statelet provides gRPC SDKs for Python (3.9+), Node.js/TypeScript (18+), Go (1.21+), Rust (1.70+), Java (17+), and C++ (17+), plus an npm memory plugin for coding agents. It also natively supports the Redis RESP2 protocol, so existing Redis clients can connect directly on port 6379."
           }
         },
         {
@@ -184,7 +184,7 @@
           "name": "How is Statelet deployed?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Statelet can be run from source with three services: metadata_service, raft_engine with the data-node feature, and gateway. It also ships Kubernetes manifests and macOS launchd service definitions. The topology consists of stateless gateways, a metadata Raft plane, and sharded data nodes."
+            "text": "Statelet installs from pip, Homebrew, apt, dnf, a Windows MSI, or platform tarballs, and statelet-cluster start brings up all three services at once. The Debian and RPM packages register a systemd unit. It can also be built from source and ships Kubernetes manifests. The topology consists of stateless gateways, a metadata Raft plane, and sharded data nodes."
           }
         },
         {
@@ -213,25 +213,25 @@
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "How to Get Started with Statelet",
-      "description": "Start Statelet locally with the metadata service, data node, and gateway.",
+      "description": "Install Statelet, start a local cluster, and connect a client.",
       "step": [
         {
           "@type": "HowToStep",
           "position": 1,
-          "name": "Build from source",
-          "text": "Clone the repository and build the data-node binary with Rust: cargo build --release --features data-node"
+          "name": "Install Statelet",
+          "text": "Install the server from any channel: pip install statelet, brew install stateletlab/statelet/statelet, apt-get install statelet, or dnf install statelet. Each one installs the statelet-metadata, statelet-datanode, statelet-gateway, and statelet-cli binaries plus the admin UI."
         },
         {
           "@type": "HowToStep",
           "position": 2,
           "name": "Start the services",
-          "text": "Run cargo run --bin metadata_service, then cargo run --features data-node --bin raft_engine -- /tmp/statelet 127.0.0.1:7379, then cargo run --bin gateway"
+          "text": "Run statelet-cluster start to bring up the metadata service, data nodes, and gateway together. Debian and RPM packages instead enable statelet.service, and Homebrew offers brew services start statelet. The gateway then serves gRPC on port 9379, Redis RESP2 on 6379, and the REST API and admin UI on 9380."
         },
         {
           "@type": "HowToStep",
           "position": 3,
           "name": "Connect with a client",
-          "text": "Use the Python SDK (pip install statelet) or connect via redis-cli on port 6379"
+          "text": "Install a client SDK — pip install statelet-sdk, npm install statelet-sdk, go get github.com/stateletlab/statelet-sdk/go, cargo add statelet-sdk, or ai.statelet:statelet-sdk for Java — or connect via redis-cli on port 6379."
         }
       ]
     }
@@ -257,7 +257,7 @@
 	        <li><strong>CDC Feed</strong> - Durable SubscribeCommitted stream keyed on Raft log offsets for catch-up and live-tail integrations.</li>
 	        <li><strong>Raft Distributed Consensus</strong> - Separate metadata and per-shard data Raft groups for production topology.</li>
 	        <li><strong>Redis Protocol Compatible</strong> - RESP2-compatible TCP server. Any Redis client can connect directly.</li>
-	        <li><strong>Multi-Language SDKs</strong> - Official gRPC clients for Python 3.9+, Rust 1.70+, Go 1.21+, Java 17+, and C++ 17+.</li>
+	        <li><strong>Multi-Language SDKs</strong> - Official gRPC clients for Python 3.9+, Node.js 18+, Go 1.21+, Rust 1.70+, Java 17+, and C++ 17+.</li>
 	        <li><strong>Management Web Console</strong> - Namespaces, databases, graph queries, KV operations, user management, and Prometheus metrics.</li>
 	      </ul>
 
@@ -279,10 +279,10 @@
 	      <p>Statelet's gateway extracts structured facts from conversations, detects conflicts through vector similarity, resolves updates with temporal supersedes edges, and stores each fact with temporal metadata. Agents can recall memories with vector search, hybrid dense+sparse search, graph-RAG expansion, Personalized PageRank, and AS OF time travel.</p>
 
       <h2>SDKs &amp; Protocols</h2>
-      <p>Official gRPC clients: Python 3.9+, Rust 1.70+, Go 1.21+, Java 17+, C++ 17+. Redis RESP2 protocol compatible — connect with redis-cli or any Redis client library.</p>
+      <p>Official gRPC clients: Python 3.9+ (pip install statelet-sdk), Node.js 18+ (npm install statelet-sdk), Go 1.21+, Rust 1.70+, Java 17+, C++ 17+. Redis RESP2 protocol compatible — connect with redis-cli or any Redis client library.</p>
 
-      <h2>Deployment</h2>
-      <p>Single Node (cargo run), Docker (multi-stage build), Kubernetes (StatefulSet with 3+ data nodes), macOS launchd.</p>
+      <h2>Installation &amp; Deployment</h2>
+      <p>Install the server with pip install statelet, brew install stateletlab/statelet/statelet, apt-get install statelet, dnf install statelet, a Windows MSI, or a platform tarball. Start everything with statelet-cluster start, or let the systemd unit from the Debian and RPM packages handle it. Also deployable via Docker (multi-stage build) and Kubernetes (StatefulSets with 3+ data nodes).</p>
 
       <p>Open source, Apache 2.0 licensed. <a href="https://github.com/stateletlab/statelet-longmemeval">View on GitHub</a>.</p>
     </noscript>

@@ -5,34 +5,55 @@ title: Quick Start
 
 # Quick Start
 
-This guide starts a local Statelet deployment and writes a key through the Python SDK.
+This guide installs Statelet, starts a local cluster, and writes a key through
+the Python SDK.
 
-## 1. Start Statelet
-
-Run the three services in separate terminals:
-
-```bash
-cargo run --bin metadata_service
-```
+## 1. Install
 
 ```bash
-cargo run --features data-node --bin raft_engine -- /tmp/statelet 127.0.0.1:7379
+pip install statelet
 ```
+
+One command: the server binaries plus the Python client. Prefer a native
+package manager? See [Installation](/getting-started/installation) for Homebrew,
+apt, dnf, and the release archives — the rest of this guide is identical either
+way.
+
+## 2. Start Statelet
 
 ```bash
-cargo run --bin gateway
+statelet-cluster start
 ```
 
-The gateway exposes gRPC on `:9379`, Redis RESP2 on `:6379`, and the management UI / REST API on `:9380`.
+This starts the metadata service, three data nodes, and the gateway, keeping
+state under `~/.statelet/cluster`. Check on it with `statelet-cluster status`,
+and shut it down with `statelet-cluster stop`.
 
-## 2. Install the Python SDK
+The gateway exposes gRPC on `:9379`, Redis RESP2 on `:6379`, and the management
+UI / REST API on `:9380`.
 
-```bash
-cd sdk/python
-pip install -e .
-```
+:::tip
+Installed from a `.deb` or `.rpm`? The package already enabled and started
+`statelet.service`, so there is nothing to launch — `systemctl status statelet`
+confirms it.
+:::
 
 ## 3. Write and Read Data
+
+The high-level `Client` talks to the gateway on `:9379`, which is what you want
+for anything beyond plain KV:
+
+```python
+from statelet import Client
+
+db = Client("127.0.0.1:9379")
+db.put("hello", b"world")
+print(db.get("hello"))   # b"world"
+db.delete("hello")
+```
+
+For direct KV and vector access to a data node, `StateletClient` connects to
+`:7379` and skips the gateway:
 
 ```python
 from statelet import StateletClient
@@ -58,11 +79,12 @@ OK
 
 ## 5. Open the Admin UI
 
-Open `http://127.0.0.1:9380` to inspect cluster state, namespaces, databases, KV data, graph queries, users, and metrics.
+Open `http://127.0.0.1:9380` to inspect cluster state, namespaces, databases,
+KV data, graph queries, users, and metrics.
 
 ## What's Next?
 
-- [Installation](/getting-started/installation) — build from source or install macOS services
+- [Installation](/getting-started/installation) — every install channel, and building from source
 - [Vector Search](/concepts/vector-search) — DiskHNSW, SPFresh, and hybrid retrieval
 - [Redis Protocol](/api/redis-protocol) — RESP2 compatibility
 - [Benchmarks](/benchmarks) — temporal graph and memory evaluation results

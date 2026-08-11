@@ -102,12 +102,12 @@ export default function Hero() {
               <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#9a9089]">agent_memory.py</span>
             </div>
             <pre className="p-6 text-left text-[13px] font-mono leading-[1.7] overflow-x-auto text-[#ede6dc]">
-	              <code>{`from statelet import StateletClient
+	              <code>{`from statelet import Client
 
-with StateletClient("127.0.0.1:7379") as client:
-    client.put(b"agent:pref:editor", b"vim")
-    print(client.get(b"agent:pref:editor"))
-    client.delete(b"agent:pref:editor")`}</code>
+db = Client("127.0.0.1:9379")
+db.put("agent:pref:editor", b"vim")
+print(db.get("agent:pref:editor"))
+db.delete("agent:pref:editor")`}</code>
             </pre>
           </div>
         </motion.div>

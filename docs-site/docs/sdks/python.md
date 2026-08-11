@@ -12,10 +12,19 @@ Official Python client for Statelet. Requires Python 3.9+.
 Install directly via pip — no extra build tools or protobuf compilation needed:
 
 ```bash
+pip install statelet-sdk
+```
+
+`statelet-sdk` is the client on its own; the import package is `statelet`.
+
+```bash
 pip install statelet
 ```
 
-The package includes the gRPC client and all dependencies out of the box.
+`statelet` is the **server** distribution — it ships the service binaries and
+the admin UI, and declares `statelet-sdk` as a dependency. Install it instead if
+you also want to run a node locally. Either way, `import statelet` gives you the
+same client.
 
 ## Quick Start
 

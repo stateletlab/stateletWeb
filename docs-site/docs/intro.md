@@ -32,18 +32,23 @@ Statelet is an Apache 2.0 distributed database built from scratch in Rust. It gi
 
 ## Quick Example
 
-```python
-from statelet import StateletClient
+```bash
+pip install statelet     # server binaries + Python client
+statelet-cluster start
+```
 
-with StateletClient("127.0.0.1:7379") as client:
-    client.put(b"agent:pref:editor", b"vim")
-    print(client.get(b"agent:pref:editor"))
-    client.delete(b"agent:pref:editor")
+```python
+from statelet import Client
+
+db = Client("127.0.0.1:9379")
+db.put("agent:pref:editor", b"vim")
+print(db.get("agent:pref:editor"))
+db.delete("agent:pref:editor")
 ```
 
 ## Next Steps
 
-- [Installation](/getting-started/installation) — build and run the metadata service, data node, and gateway
+- [Installation](/getting-started/installation) — Homebrew, apt, dnf, pip, archives, or source
 - [Quick Start](/getting-started/quickstart) — start Statelet locally and write your first key
 - [Benchmarks](/benchmarks) — temporal graph and LongMemEval-S results
-- [SDKs](/sdks/python) — Python, Rust, Go, Java, and C++ clients
+- [SDKs](/sdks/python) — Python, Rust, Go, Java, C++, and Node.js clients

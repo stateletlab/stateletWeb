@@ -6,27 +6,27 @@ const deployOptions = [
     icon: Terminal,
     title: 'Single Node',
     description: 'Development & testing',
-    code: `cargo run --bin metadata_service
-cargo run --features data-node --bin raft_engine -- \\
-  /tmp/statelet 127.0.0.1:7379
-cargo run --bin gateway`,
+    code: `pip install statelet
+statelet-cluster start
+statelet-cluster status`,
+  },
+  {
+    icon: Monitor,
+    title: 'Homebrew / apt / dnf',
+    description: 'Managed background service',
+    code: `brew install stateletlab/statelet/statelet
+brew services start statelet
+# or: apt-get install statelet
+#     systemctl status statelet`,
   },
   {
     icon: Cloud,
     title: 'Kubernetes',
     description: '3+ node production cluster',
     code: `kubectl apply -f k8s/namespace.yaml
-kubectl apply -f k8s/metadata-service.yaml
+kubectl apply -f k8s/metadata.yaml
 kubectl apply -f k8s/raft-engine.yaml
 kubectl apply -f k8s/gateway.yaml`,
-  },
-  {
-    icon: Monitor,
-    title: 'macOS launchd',
-    description: 'Background services',
-    code: `cargo build --release --features data-node
-sudo bash scripts/launchd-install.sh
-launchctl list | grep statelet`,
   },
 ]
 
@@ -40,7 +40,7 @@ export default function GetStarted() {
             Deploy in minutes.
           </h2>
           <p className="text-text-muted text-lg max-w-[500px] mx-auto leading-relaxed">
-            Start the metadata service, data node, and gateway locally, or install managed services for production.
+            Install from pip, Homebrew, apt, or dnf — one command brings the metadata service, data nodes, and gateway up together.
           </p>
         </div>
 

@@ -14,16 +14,24 @@ Official Java client for Statelet. Requires Java 17+.
 ```xml
 <dependency>
     <groupId>ai.statelet</groupId>
-    <artifactId>statelet-client</artifactId>
-    <version>0.1.0</version>
+    <artifactId>statelet-sdk</artifactId>
+    <version>0.1.3</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-implementation 'ai.statelet:statelet-client:0.1.0'
+implementation 'ai.statelet:statelet-sdk:0.1.3'
 ```
+
+Published to Maven Central. Requires Maven 3.8+ to build against.
+
+:::note Renamed
+The artifact was `ai.statelet:statelet-client` while the SDKs lived under `sdk/`
+in the engine repository. Java package names are unchanged — the client is still
+`ai.statelet.client.StateletClient`.
+:::
 
 ## Quick Start
 

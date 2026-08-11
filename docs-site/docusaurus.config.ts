@@ -113,8 +113,9 @@ const config: Config = {
           title: 'SDKs',
           items: [
             { label: 'Python', to: '/sdks/python' },
-            { label: 'Rust', to: '/sdks/rust' },
+            { label: 'Node.js', to: '/sdks/nodejs' },
             { label: 'Go', to: '/sdks/go' },
+            { label: 'Rust', to: '/sdks/rust' },
             { label: 'Java', to: '/sdks/java' },
             { label: 'C++', to: '/sdks/cpp' },
           ],

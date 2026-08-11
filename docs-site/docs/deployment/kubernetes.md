@@ -27,6 +27,13 @@ Production deployment with 3+ data nodes using StatefulSets for stable network i
 └─────────────┘    └─────────────┘
 ```
 
+:::info Image
+No official image is published yet. Build one from an engine checkout and push it
+to a registry your cluster can pull from — see
+[Docker](/deployment/docker#build-the-image) for the Dockerfile — then replace
+`statelet/statelet:local` below with that tag.
+:::
+
 ## Deploy
 
 ```bash
@@ -70,19 +77,23 @@ spec:
     spec:
       containers:
         - name: metadata
-          image: statelet/statelet:latest
-          command: ["metadata"]
-          args:
-            - "--id=$(POD_INDEX)"
-            - "--bind=0.0.0.0:7380"
-            - "--peers=metadata-0.metadata:7380,metadata-1.metadata:7380,metadata-2.metadata:7380"
+          image: statelet/statelet:local
+          # Node ids are 1-based and the StatefulSet ordinal is 0-based, so the
+          # id is derived from the hostname rather than passed in directly —
+          # env-var substitution cannot do the arithmetic.
+          command:
+            - sh
+            - -c
+            - 'export META_NODE_ID=$(( ${HOSTNAME##*-} + 1 )) && exec metadata_service'
           env:
-            - name: POD_INDEX
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.labels['apps.kubernetes.io/pod-index']
+            - name: META_ADDR
+              value: "0.0.0.0:8379"
+            - name: META_PEERS
+              value: "1@metadata-0.metadata:8379,2@metadata-1.metadata:8379,3@metadata-2.metadata:8379"
+            - name: META_DATA_DIR
+              value: "/data"
           ports:
-            - containerPort: 7380
+            - containerPort: 8379
           volumeMounts:
             - name: data
               mountPath: /data
@@ -112,7 +123,7 @@ spec:
   selector:
     app: statelet-metadata
   ports:
-    - port: 7380
+    - port: 8379
 ```
 
 ### Data Node StatefulSet
@@ -137,10 +148,21 @@ spec:
     spec:
       containers:
         - name: data-node
-          image: statelet/statelet:latest
-          command: ["raft_engine", "/data", "0.0.0.0:7379"]
+          image: statelet/statelet:local
+          command:
+            - sh
+            - -c
+            - 'export DATA_NODE_ID=$(( ${HOSTNAME##*-} + 1 )) && exec raft_engine /data'
+          env:
+            - name: META_SERVER
+              value: "http://metadata:8379"
+            - name: DATA_ADDR
+              value: "0.0.0.0:7379"
+            - name: RAFT_ADDR
+              value: "0.0.0.0:7380"
           ports:
             - containerPort: 7379
+            - containerPort: 7380
           volumeMounts:
             - name: data
               mountPath: /data
@@ -194,10 +216,19 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: statelet/statelet:latest
+          image: statelet/statelet:local
           command: ["gateway"]
-          args:
-            - "--metadata=metadata-0.metadata:7380,metadata-1.metadata:7380,metadata-2.metadata:7380"
+          env:
+            - name: GATEWAY_META
+              value: "http://metadata:8379"
+            - name: GATEWAY_ADDR
+              value: "0.0.0.0:9379"
+            - name: GATEWAY_MGMT_ADDR
+              value: "0.0.0.0:9380"
+            - name: GATEWAY_REDIS_ADDR
+              value: "0.0.0.0:6379"
+            - name: GATEWAY_UI_DIR
+              value: "/usr/local/share/statelet/ui"
           ports:
             - containerPort: 9379
               name: grpc

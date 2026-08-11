@@ -10,11 +10,17 @@ variables. There is no configuration file.
 
 A deployment has three processes:
 
-| Binary | Role | Default port |
-|--------|------|--------------|
-| `raft_engine` | Data node — KV, vector and storage engine | `7379` (gRPC), `7380` (Raft) |
-| `metadata_service` | Metadata plane — shard map, CF registry, rebalancing | `8379` |
-| `gateway` | Client entry point — agent state, auth, Redis protocol | `9379` (gRPC), `9380` (HTTP), `6379` (Redis) |
+| Binary | Installed as | Role | Default port |
+|--------|--------------|------|--------------|
+| `raft_engine` | `statelet-datanode` | Data node — KV, vector and storage engine | `7379` (gRPC), `7380` (Raft) |
+| `metadata_service` | `statelet-metadata` | Metadata plane — shard map, CF registry, rebalancing | `8379` |
+| `gateway` | `statelet-gateway` | Client entry point — agent state, auth, Redis protocol | `9379` (gRPC), `9380` (HTTP), `6379` (Redis) |
+
+The first column is the crate binary name, which is what you get from a source
+checkout and what appears in the examples below. Every install channel renames
+them to the second column and adds `statelet-cli` plus the `statelet-cluster`
+launcher, which sets all of this up for you — see
+[Installation](/getting-started/installation).
 
 ## Data Node (`raft_engine`)
 

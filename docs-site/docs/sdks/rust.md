@@ -11,9 +11,18 @@ Official Rust client for Statelet. Requires Rust 1.70+.
 
 ```toml
 [dependencies]
-statelet-client = "0.1"
+statelet-sdk = "0.1"
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
 ```
+
+Or `cargo add statelet-sdk tokio --features tokio/rt-multi-thread,tokio/macros`.
+The crate is published on [crates.io](https://crates.io/crates/statelet-sdk);
+the current release is 0.1.3.
+
+:::note Renamed
+The crate was `statelet-client` while the SDKs lived under `sdk/` in the engine
+repository. The import root is now `statelet_sdk`, not `statelet_client`.
+:::
 
 ## Scope
 
@@ -30,7 +39,7 @@ Every method takes `&mut self` and returns `Result<_, tonic::Status>`.
 ## Quick Start
 
 ```rust
-use statelet_client::StateletClient;
+use statelet_sdk::StateletClient;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -66,7 +75,7 @@ client.set_default_cf(1);
 `WriteOp` is an enum; each variant carries its own column family.
 
 ```rust
-use statelet_client::WriteOp;
+use statelet_sdk::WriteOp;
 
 client.batch_write(vec![
     WriteOp::Put    { cf: 0, key: b"key1".to_vec(), value: b"value1".to_vec() },
@@ -92,7 +101,7 @@ client.delete_by_prefix(b"session:", None).await?;
 ## Vector Search
 
 ```rust
-use statelet_client::VectorIndexConfig;
+use statelet_sdk::VectorIndexConfig;
 
 let config = VectorIndexConfig {
     dim: 768,
@@ -119,7 +128,7 @@ Subscribe to the committed change feed. The handler returns `Ok(true)` to keep
 consuming and `Ok(false)` to stop.
 
 ```rust
-use statelet_client::{FileCheckpointStore, SubscribeCommittedOptions};
+use statelet_sdk::{FileCheckpointStore, SubscribeCommittedOptions};
 
 let store = FileCheckpointStore::open("/var/lib/myapp/cdc.ckpt")?;
 let opts = SubscribeCommittedOptions {

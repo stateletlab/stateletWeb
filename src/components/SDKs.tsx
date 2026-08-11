@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
 
 const sdks = [
-  { name: 'Python', version: '3.9+', install: 'pip install statelet' },
-  { name: 'Rust', version: '1.70+', install: 'statelet-client = "0.1"' },
-  { name: 'Go', version: '1.21+', install: 'cd sdk/go && make proto' },
-  { name: 'Java', version: '17+', install: 'ai.statelet:statelet-client' },
-  { name: 'C++', version: '17+', install: 'cmake -B build && cmake --build build' },
+  { name: 'Python', version: '3.9+', install: 'pip install statelet-sdk' },
+  { name: 'Node.js', version: '18+', install: 'npm install statelet-sdk' },
+  { name: 'Go', version: '1.21+', install: 'go get .../statelet-sdk/go' },
+  { name: 'Rust', version: '1.70+', install: 'cargo add statelet-sdk' },
+  { name: 'Java', version: '17+', install: 'ai.statelet:statelet-sdk' },
+  { name: 'C++', version: '17+', install: 'FetchContent → cpp-v0.1.3' },
 ]
 
 export default function SDKs() {
@@ -27,7 +28,7 @@ export default function SDKs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[720px] mx-auto"
+          className="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-[720px] mx-auto"
         >
           {sdks.map(sdk => (
             <div key={sdk.name}

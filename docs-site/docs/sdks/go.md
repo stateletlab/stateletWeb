@@ -9,17 +9,22 @@ Official Go client for Statelet. Requires Go 1.21+.
 
 ## Installation
 
-The generated protobuf stubs are not checked in, so build them once from the
-repository:
-
 ```bash
-go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-
-cd sdk/go && make proto
+go get github.com/stateletlab/statelet-sdk/go@latest
 ```
 
-The module path is `github.com/stateletlab/statelet-longmemeval/sdk/go`.
+The generated protobuf stubs are committed, so you need neither `protoc` nor a
+code-generation step.
+
+The module path is `github.com/stateletlab/statelet-sdk/go`. Because the module
+is nested in a polyglot repository, its releases are tagged `go/vX.Y.Z` rather
+than `vX.Y.Z` — pin a version with
+`go get github.com/stateletlab/statelet-sdk/go@v0.1.3`.
+
+:::note Moved
+Through v0.1.x this module lived at `github.com/stateletlab/statelet/sdk/go`.
+Updating the import lines is the whole migration; the API did not change.
+:::
 
 ## Endpoints
 
@@ -38,7 +43,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/stateletlab/statelet-longmemeval/sdk/go/statelet"
+    "github.com/stateletlab/statelet-sdk/go/statelet"
 )
 
 func main() {
@@ -77,7 +82,7 @@ client.PutCF(ctx, 1, []byte("user:1"), []byte("..."))
 ### Batch write
 
 ```go
-import pb "github.com/stateletlab/statelet-longmemeval/sdk/go/statelet/proto"
+import pb "github.com/stateletlab/statelet-sdk/go/statelet/proto"
 
 client.BatchWrite(ctx, []statelet.WriteOp{
     {Op: pb.WriteOp_PUT, Key: []byte("key1"), Value: []byte("value1")},

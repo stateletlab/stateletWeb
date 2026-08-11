@@ -13,16 +13,42 @@ Official C++ client for Statelet. Requires C++17 or later.
 - A C++17 compiler
 - gRPC and Protobuf installed (e.g. `brew install grpc protobuf`, or vcpkg)
 
-## Build
+## Installation
 
-```bash
-mkdir build && cd build
-cmake ..
-make
+There is no C++ package registry to install from, so the CMake project is
+consumed as source. The easiest route is `FetchContent`:
+
+```cmake
+include(FetchContent)
+FetchContent_Declare(statelet_sdk
+  GIT_REPOSITORY https://github.com/stateletlab/statelet-sdk.git
+  GIT_TAG        cpp-v0.1.3
+  SOURCE_SUBDIR  cpp)
+FetchContent_MakeAvailable(statelet_sdk)
+
+target_link_libraries(my_app PRIVATE statelet_sdk)
 ```
 
-The build produces the `statelet_client` library; link it and add
-`sdk/cpp/include` to your include path.
+Self-contained source tarballs, with a `.sha256` beside each, are attached to
+the [`cpp-v*` releases](https://github.com/stateletlab/statelet-sdk/releases).
+
+## Build standalone
+
+```bash
+git clone https://github.com/stateletlab/statelet-sdk.git
+cd statelet-sdk/cpp
+cmake -B build
+cmake --build build
+ctest --test-dir build
+```
+
+The build produces the `statelet_sdk` library; link it and add `cpp/include` to
+your include path.
+
+:::note Renamed
+The CMake project and library target were `statelet-client` / `statelet_client`
+while the tree lived at `sdk/cpp` in the engine repository.
+:::
 
 ## Endpoints
 

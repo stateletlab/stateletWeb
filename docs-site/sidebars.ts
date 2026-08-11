@@ -55,6 +55,7 @@ const sidebars: SidebarsConfig = {
         'sdks/go',
         'sdks/java',
         'sdks/cpp',
+        'sdks/nodejs',
       ],
     },
     {
