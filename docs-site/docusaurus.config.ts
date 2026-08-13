@@ -128,7 +128,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Open-core — Statelet`,
+      copyright: `Fair Source (FSL-1.1-ALv2) — Statelet`,
     },
     prism: {
       theme: warmCodeTheme,

@@ -11,7 +11,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <span className="inline-block mb-7 rounded-full border border-border bg-surface-light px-3.5 py-1.5 font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
-            Open-core · Written in Rust
+            Fair Source (FSL) · Written in Rust
           </span>
 
           <h1 className="text-[42px] md:text-[68px] font-medium text-text leading-[1.08] mb-6">
@@ -30,7 +30,7 @@ export default function Hero() {
           <div className="sr-only">
             <h2>Statelet: Agent Runtime Data Layer</h2>
             <p>
-              Statelet is an open-core distributed database written in Rust, with the core engine planned for open-source release.
+              Statelet is a Fair Source distributed database written in Rust — free to use, modify and self-host under the FSL, with each release converting to Apache-2.0 after two years. Source release coming soon.
               It gives AI agents durable memory, context versions, runtime state snapshots,
               an openCypher-style memory query language, vector recall, temporal graph traversal,
               causal memory chains, multi-tenant namespace/database isolation, CDC, Raft consensus,

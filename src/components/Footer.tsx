@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
 
           <div className="text-xs text-text-light">
-            Open-core · Open-sourcing soon
+            Fair Source (FSL-1.1-ALv2) · Source release soon
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ export default function CTA() {
           </span>
         </h2>
         <p className="text-text-muted text-lg max-w-[440px] mx-auto mb-10 leading-relaxed">
-          Self-hosted. Open-core, open-sourcing soon. Built for production agent state.
+          Self-hosted. Fair Source (FSL) — source release coming soon. Built for production agent state.
         </p>
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
