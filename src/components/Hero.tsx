@@ -20,7 +20,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-[19px] text-text-muted max-w-[620px] mx-auto mb-8 leading-[1.6] font-normal">
-            Give production AI agents durable memory, context, and state without sending
+            Give production AI agents durable state, memory, and context without sending
             data to third-party clouds. Query memory declaratively with an openCypher-style
             memory query language, backed by vector recall, temporal graphs, runtime snapshots,
             CDC, and Raft replication.
