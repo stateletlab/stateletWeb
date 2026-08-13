@@ -6,6 +6,7 @@ const links = [
   { href: '#architecture', label: 'Architecture' },
   { href: '#performance', label: 'Performance' },
   { href: '#agent', label: 'Agent Memory' },
+  { href: '#runtime', label: 'Runtime State' },
   { href: '#sdks', label: 'SDKs' },
   { href: '/docs/', label: 'Docs' },
 ]
