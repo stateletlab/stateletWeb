@@ -8,7 +8,7 @@ export default function CTA() {
           Give your agents
           <br />
           <span className="text-primary italic">
-            persistent memory.
+            durable state.
           </span>
         </h2>
         <p className="text-text-muted text-lg max-w-[440px] mx-auto mb-10 leading-relaxed">

@@ -5,6 +5,7 @@ import Features from './components/Features'
 import Architecture from './components/Architecture'
 import Performance from './components/Performance'
 import AgentMemory from './components/AgentMemory'
+import RuntimeState from './components/RuntimeState'
 import SDKs from './components/SDKs'
 import GetStarted from './components/GetStarted'
 import CTA from './components/CTA'
@@ -49,6 +50,7 @@ export default function App() {
       <Architecture />
       <Performance />
       <AgentMemory />
+      <RuntimeState />
       <SDKs />
       <GetStarted />
       <CTA />
