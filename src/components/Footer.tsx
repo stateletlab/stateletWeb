@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
 
           <div className="text-xs text-text-light">
-            Apache 2.0 License
+            Open-core · Open-sourcing soon
           </div>
         </div>
       </div>

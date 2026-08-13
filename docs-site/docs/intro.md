@@ -8,7 +8,7 @@ title: Introduction
 
 **The agent runtime data layer for production AI systems.**
 
-Statelet is an Apache 2.0 distributed database built from scratch in Rust. It gives AI agents durable memory, runtime state, declarative memory queries, DiskHNSW / SPFresh vector recall, temporal graph traversal, a triple store, CDC, Raft consensus, Redis RESP2 compatibility, REST management APIs, and a React admin UI in one engine.
+Statelet is an open-core distributed database built from scratch in Rust, with the core engine planned for open-source release. It gives AI agents durable memory, runtime state, declarative memory queries, DiskHNSW / SPFresh vector recall, temporal graph traversal, a triple store, CDC, Raft consensus, Redis RESP2 compatibility, REST management APIs, and a React admin UI in one engine.
 
 ## Why Statelet?
 

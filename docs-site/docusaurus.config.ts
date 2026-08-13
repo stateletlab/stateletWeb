@@ -128,7 +128,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Apache 2.0 License — Statelet`,
+      copyright: `Open-core — Statelet`,
     },
     prism: {
       theme: warmCodeTheme,

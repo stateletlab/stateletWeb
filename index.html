@@ -6,8 +6,8 @@
 
     <!-- Primary Meta -->
     <title>Statelet - Agent Runtime Data Layer</title>
-    <meta name="description" content="Statelet is an Apache 2.0 agent runtime data layer. One Rust engine gives production AI agents durable memory, context, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, and a management UI. 91.6% on LongMemEval-S." />
-    <meta name="keywords" content="Statelet, agent runtime data layer, AI agent runtime, agent state database, memory query language, SQL-like memory query, self-hosted AI memory, enterprise AI memory, agent memory database, LLM agent memory, context engineering, temporal graph database, causal graph, vector database, DiskHNSW, SPFresh, openCypher, graph RAG, CDC, Rust database, Raft consensus, Redis compatible, namespace database isolation, RBAC, ONNX embeddings, Apache 2.0" />
+    <meta name="description" content="Statelet is an open-core agent runtime data layer. One Rust engine gives production AI agents durable memory, context, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, and a management UI. 91.6% on LongMemEval-S." />
+    <meta name="keywords" content="Statelet, agent runtime data layer, AI agent runtime, agent state database, memory query language, SQL-like memory query, self-hosted AI memory, enterprise AI memory, agent memory database, LLM agent memory, context engineering, temporal graph database, causal graph, vector database, DiskHNSW, SPFresh, openCypher, graph RAG, CDC, Rust database, Raft consensus, Redis compatible, namespace database isolation, RBAC, ONNX embeddings, open-core" />
     <meta name="author" content="stateletlab" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
@@ -83,12 +83,11 @@
       "applicationCategory": "DeveloperApplication",
       "applicationSubCategory": "Agent Runtime Data Layer",
       "operatingSystem": "Linux, macOS, Windows, Docker, Kubernetes",
-      "description": "An Apache 2.0 agent runtime data layer written in Rust. Statelet gives production AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, RBAC, and a management UI.",
+      "description": "An open-core agent runtime data layer written in Rust. Statelet gives production AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, RBAC, and a management UI.",
       "url": "https://statelet.ai",
       "downloadUrl": "https://github.com/stateletlab/statelet-longmemeval",
       "installUrl": "https://statelet.ai/docs/getting-started/installation",
       "softwareVersion": "0.1.4",
-      "license": "https://opensource.org/licenses/Apache-2.0",
       "isAccessibleForFree": true,
       "programmingLanguage": ["Rust"],
       "runtimePlatform": "Tokio async runtime",
@@ -136,7 +135,7 @@
           "name": "What is Statelet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Statelet is an Apache 2.0 agent runtime data layer for production AI systems, written in Rust. It unifies durable memory, runtime state, declarative memory queries, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, and a management UI in one engine."
+            "text": "Statelet is an open-core agent runtime data layer for production AI systems, written in Rust. It unifies durable memory, runtime state, declarative memory queries, DiskHNSW/SPFresh vector recall, temporal graph traversal, CDC, Raft consensus, Redis compatibility, and a management UI in one engine."
           }
         },
         {
@@ -200,7 +199,7 @@
           "name": "Is Statelet open source?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, Statelet is fully open source under the Apache 2.0 license. The source code is available on GitHub at github.com/stateletlab/statelet-longmemeval."
+            "text": "Statelet follows an open-core model. The core engine is planned for open-source release, and the LongMemEval benchmark suite is already public on GitHub at github.com/stateletlab/statelet-longmemeval."
           }
         }
       ]
@@ -244,7 +243,7 @@
     <!-- SEO: Static content for crawlers that don't execute JavaScript -->
     <noscript>
 	      <h1>Statelet - Agent Runtime Data Layer</h1>
-	      <p>Statelet is an Apache 2.0 distributed database written in Rust. It gives AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph recall, CDC, Raft consensus, Redis compatibility, and local ONNX embeddings.</p>
+	      <p>Statelet is an open-core distributed database written in Rust. It gives AI agents durable memory, context versions, runtime state snapshots, an openCypher-style memory query language, DiskHNSW/SPFresh vector recall, temporal graph recall, CDC, Raft consensus, Redis compatibility, and local ONNX embeddings.</p>
 
 	      <h2>Statelet Features</h2>
 	      <ul>
@@ -273,7 +272,7 @@
 	        <li>End-to-end overall: 458 / 500 correct; strongest categories are single-session-assistant at 98.2% and single-session-user at 97.1%</li>
 	        <li>Search is pure vector plus graph retrieval; LLM extraction is ingestion-time only when enabled</li>
 	      </ul>
-	      <p>Open source and Apache 2.0 licensed.</p>
+	      <p>Open-core, with the core engine planned for open-source release.</p>
 
 	      <h2>Agent Memory</h2>
 	      <p>Statelet's gateway extracts structured facts from conversations, detects conflicts through vector similarity, resolves updates with temporal supersedes edges, and stores each fact with temporal metadata. Agents can recall memories with vector search, hybrid dense+sparse search, graph-RAG expansion, Personalized PageRank, and AS OF time travel.</p>
@@ -284,7 +283,7 @@
       <h2>Installation &amp; Deployment</h2>
       <p>Install the server with pip install statelet, brew install stateletlab/statelet/statelet, apt-get install statelet, dnf install statelet, a Windows MSI, or a platform tarball. Start everything with statelet-cluster start, or let the systemd unit from the Debian and RPM packages handle it. Also deployable via Docker (multi-stage build) and Kubernetes (StatefulSets with 3+ data nodes).</p>
 
-      <p>Open source, Apache 2.0 licensed. <a href="https://github.com/stateletlab/statelet-longmemeval">View on GitHub</a>.</p>
+      <p>Open-core — the engine is open-sourcing soon. <a href="https://github.com/stateletlab/statelet-longmemeval">View on GitHub</a>.</p>
     </noscript>
   </body>
 </html>
