@@ -99,11 +99,11 @@ export default function Features() {
         <div className="text-center mb-20">
           <p className="eyebrow mb-4">Features</p>
           <h2 className="text-[34px] md:text-[46px] font-medium text-text leading-[1.12] mb-5">
-            Everything an agent
-            <br />needs to <span className="italic text-primary">remember.</span>
+            Kubernetes gives agents compute.
+            <br />We give agents <span className="italic text-primary">durable state.</span>
           </h2>
           <p className="text-text-muted text-lg max-w-[500px] mx-auto leading-relaxed">
-            Durable memory, context, state snapshots, SQL-like memory queries, semantic recall, lineage, isolation, and event streams for production AI agents.
+            Everything Kubernetes doesn't remember — memory, snapshots, SQL-like queries, semantic recall, lineage, isolation, and event streams for your agents.
           </p>
         </div>
 
