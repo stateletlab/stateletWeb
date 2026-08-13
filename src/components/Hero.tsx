@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Star, Heart } from 'lucide-react'
+import StarPledge from './StarPledge'
 
 export default function Hero() {
   return (
@@ -73,6 +74,7 @@ export default function Hero() {
                 Sponsor
               </a>
             </div>
+            <StarPledge className="mt-2" />
           </div>
         </motion.div>
 

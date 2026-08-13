@@ -1,4 +1,5 @@
 import { ArrowRight, Star, Heart } from 'lucide-react'
+import StarPledge from './StarPledge'
 
 export default function CTA() {
   return (
@@ -47,6 +48,7 @@ export default function CTA() {
               Sponsor
             </a>
           </div>
+          <StarPledge className="mt-2" />
         </div>
       </div>
     </section>
