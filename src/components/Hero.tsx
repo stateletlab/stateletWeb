@@ -85,16 +85,25 @@ export default function Hero() {
         >
           {/* Deploy in minutes */}
           <div className="mb-5 text-center">
-            <p className="text-sm text-text-muted">
-              Deploy in minutes —{' '}
-              <code className="px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
-                pip install statelet
-              </code>
-              {' '}
-              <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">
-                Available
-              </span>
-            </p>
+            <p className="text-sm text-text-muted mb-2">Deploy in minutes</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
+              <p className="text-sm text-text-muted">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-accent bg-accent/10 px-2 py-0.5 rounded-md mr-2">
+                  Lite · Single Binary
+                </span>
+                <code className="px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
+                  pip install statelet
+                </code>
+              </p>
+              <p className="text-sm text-text-muted">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-purple bg-purple/10 px-2 py-0.5 rounded-md mr-2">
+                  Enterprise · Distributed
+                </span>
+                <code className="px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
+                  kubectl apply -f k8s/
+                </code>
+              </p>
+            </div>
           </div>
 
           <div className="rounded-xl bg-surface-dark overflow-hidden border border-surface-dark">
@@ -102,12 +111,16 @@ export default function Hero() {
               <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#9a9089]">agent_memory.py</span>
             </div>
             <pre className="p-6 text-left text-[13px] font-mono leading-[1.7] overflow-x-auto text-[#ede6dc]">
-	              <code>{`from statelet import Client
+	              <code>{`from statelet import AgentMemory
 
-db = Client("127.0.0.1:9379")
-db.put("agent:pref:editor", b"vim")
-print(db.get("agent:pref:editor"))
-db.delete("agent:pref:editor")`}</code>
+mem = AgentMemory("127.0.0.1:9379", agent_id="agent-1")
+
+obs = mem.observe("User prefers vim keybindings")
+act = mem.observe("Switched editor config to vim mode")
+mem.link(obs, act, "caused")
+
+for m in mem.recall("editor preferences"):
+    print(m.text)`}</code>
             </pre>
           </div>
         </motion.div>

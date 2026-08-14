@@ -4,8 +4,9 @@ import { Terminal, Cloud, Monitor } from 'lucide-react'
 const deployOptions = [
   {
     icon: Terminal,
-    title: 'Single Node',
-    description: 'Development & testing',
+    title: 'pip',
+    edition: 'Lite',
+    description: 'Single binary — dev, testing & edge',
     code: `pip install statelet
 statelet-cluster start
 statelet-cluster status`,
@@ -13,7 +14,8 @@ statelet-cluster status`,
   {
     icon: Monitor,
     title: 'Homebrew / apt / dnf',
-    description: 'Managed background service',
+    edition: 'Lite',
+    description: 'Single binary as a managed service',
     code: `brew install stateletlab/statelet/statelet
 brew services start statelet
 # or: apt-get install statelet
@@ -22,7 +24,8 @@ brew services start statelet
   {
     icon: Cloud,
     title: 'Kubernetes',
-    description: '3+ node production cluster',
+    edition: 'Enterprise',
+    description: '3+ node distributed cluster',
     code: `kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/metadata.yaml
 kubectl apply -f k8s/raft-engine.yaml
@@ -39,8 +42,9 @@ export default function GetStarted() {
           <h2 className="text-[34px] md:text-[46px] font-medium text-text leading-[1.12] mb-5">
             Deploy in minutes.
           </h2>
-          <p className="text-text-muted text-lg max-w-[500px] mx-auto leading-relaxed">
-            Install from pip, Homebrew, apt, or dnf — one command brings the metadata service, data nodes, and gateway up together.
+          <p className="text-text-muted text-lg max-w-[560px] mx-auto leading-relaxed">
+            Start with the Lite single binary from pip, Homebrew, apt, or dnf — or deploy the
+            Enterprise distributed cluster on Kubernetes. Same engine, same data format.
           </p>
         </div>
 
@@ -58,8 +62,15 @@ export default function GetStarted() {
                   <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center">
                     <opt.icon className="w-5 h-5 text-text" />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-text text-sm">{opt.title}</h3>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-semibold text-text text-sm">{opt.title}</h3>
+                      <span className={`text-[10px] font-semibold uppercase tracking-[0.08em] px-2 py-0.5 rounded-md ${
+                        opt.edition === 'Lite' ? 'text-accent bg-accent/10' : 'text-purple bg-purple/10'
+                      }`}>
+                        {opt.edition}
+                      </span>
+                    </div>
                     <p className="text-xs text-text-light">{opt.description}</p>
                   </div>
                 </div>
