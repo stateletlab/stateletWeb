@@ -86,23 +86,23 @@ export default function Hero() {
           {/* Deploy in minutes */}
           <div className="mb-5 text-center">
             <p className="text-sm text-text-muted mb-2">Deploy in minutes</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6">
-              <p className="text-sm text-text-muted">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-accent bg-accent/10 px-2 py-0.5 rounded-md mr-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+              <div className="flex flex-col items-center gap-1.5">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">
                   Lite · Single Binary
                 </span>
-                <code className="px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
+                <code className="whitespace-nowrap px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
                   pip install statelet
                 </code>
-              </p>
-              <p className="text-sm text-text-muted">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-purple bg-purple/10 px-2 py-0.5 rounded-md mr-2">
+              </div>
+              <div className="flex flex-col items-center gap-1.5">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-purple bg-purple/10 px-2 py-0.5 rounded-md">
                   Enterprise · Distributed
                 </span>
-                <code className="px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
+                <code className="whitespace-nowrap px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
                   kubectl apply -f k8s/
                 </code>
-              </p>
+              </div>
             </div>
           </div>
 
