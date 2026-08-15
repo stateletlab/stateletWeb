@@ -1,7 +1,45 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Star, Heart } from 'lucide-react'
 
+const editions = {
+  lite: {
+    badge: 'Lite · Single Binary',
+    badgeClass: 'text-accent bg-accent/10',
+    install: 'pip install statelet-lite',
+    code: `from statelet_lite import AgentMemory
+
+mem = AgentMemory("127.0.0.1:9379", agent_id="agent-1")
+
+obs = mem.observe("User prefers vim keybindings")
+act = mem.observe("Switched editor config to vim mode")
+mem.link(obs, act, "caused")
+
+for m in mem.recall("editor preferences"):
+    print(m.text)`,
+  },
+  enterprise: {
+    badge: 'Enterprise · Distributed',
+    badgeClass: 'text-purple bg-purple/10',
+    install: 'pip install statelet',
+    code: `from statelet import AgentMemory
+
+mem = AgentMemory("statelet-gateway:9379", agent_id="agent-1")
+
+obs = mem.observe("User prefers vim keybindings")
+act = mem.observe("Switched editor config to vim mode")
+mem.link(obs, act, "caused")
+
+for m in mem.recall("editor preferences"):
+    print(m.text)`,
+  },
+} as const
+
+type EditionKey = keyof typeof editions
+
 export default function Hero() {
+  const [edition, setEdition] = useState<EditionKey>('lite')
+
   return (
     <section aria-label="Statelet - Agent Runtime Data Layer" className="relative pt-28 md:pt-32 pb-10 md:pb-12 bg-surface">
       <div className="relative max-w-[980px] mx-auto px-6 text-center">
@@ -87,22 +125,26 @@ export default function Hero() {
           <div className="mb-5 text-center">
             <p className="text-sm text-text-muted mb-2">Deploy in minutes</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">
-                  Lite · Single Binary
-                </span>
-                <code className="whitespace-nowrap px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
-                  pip install statelet
-                </code>
-              </div>
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-purple bg-purple/10 px-2 py-0.5 rounded-md">
-                  Enterprise · Distributed
-                </span>
-                <code className="whitespace-nowrap px-2 py-1 rounded-md bg-surface-light border border-border-light text-primary font-mono text-[13px] font-medium">
-                  kubectl apply -f k8s/
-                </code>
-              </div>
+              {(Object.keys(editions) as EditionKey[]).map(key => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setEdition(key)}
+                  aria-pressed={edition === key}
+                  className={`flex flex-col items-center gap-1.5 rounded-lg p-1.5 -m-1.5 transition-opacity ${
+                    edition === key ? 'opacity-100' : 'opacity-50 hover:opacity-80'
+                  }`}
+                >
+                  <span className={`text-[10px] font-semibold uppercase tracking-[0.08em] px-2 py-0.5 rounded-md ${editions[key].badgeClass}`}>
+                    {editions[key].badge}
+                  </span>
+                  <code className={`whitespace-nowrap px-2 py-1 rounded-md bg-surface-light border text-primary font-mono text-[13px] font-medium ${
+                    edition === key ? 'border-primary' : 'border-border-light'
+                  }`}>
+                    {editions[key].install}
+                  </code>
+                </button>
+              ))}
             </div>
           </div>
 
@@ -111,16 +153,7 @@ export default function Hero() {
               <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-[#9a9089]">agent_memory.py</span>
             </div>
             <pre className="p-6 text-left text-[13px] font-mono leading-[1.7] overflow-x-auto text-[#ede6dc]">
-	              <code>{`from statelet import AgentMemory
-
-mem = AgentMemory("127.0.0.1:9379", agent_id="agent-1")
-
-obs = mem.observe("User prefers vim keybindings")
-act = mem.observe("Switched editor config to vim mode")
-mem.link(obs, act, "caused")
-
-for m in mem.recall("editor preferences"):
-    print(m.text)`}</code>
+              <code>{editions[edition].code}</code>
             </pre>
           </div>
         </motion.div>

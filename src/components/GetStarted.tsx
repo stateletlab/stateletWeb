@@ -7,7 +7,7 @@ const deployOptions = [
     title: 'pip',
     edition: 'Lite',
     description: 'Single binary — dev, testing & edge',
-    code: `pip install statelet
+    code: `pip install statelet-lite
 statelet-cluster start
 statelet-cluster status`,
   },
