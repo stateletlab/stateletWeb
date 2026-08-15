@@ -5,26 +5,30 @@ const deployOptions = [
   {
     icon: Terminal,
     title: 'pip',
-    edition: 'Lite',
-    description: 'Single binary — dev, testing & edge',
-    code: `pip install statelet-lite
-statelet-cluster start
-statelet-cluster status`,
+    editions: ['Lite', 'Enterprise'],
+    description: 'Install either edition in one command',
+    code: `# Lite — single binary
+pip install statelet-lite
+
+# Enterprise — distributed
+pip install statelet`,
   },
   {
     icon: Monitor,
     title: 'Homebrew / apt / dnf',
-    edition: 'Lite',
-    description: 'Single binary as a managed service',
-    code: `brew install stateletlab/statelet/statelet
-brew services start statelet
-# or: apt-get install statelet
-#     systemctl status statelet`,
+    editions: ['Lite', 'Enterprise'],
+    description: 'Run either edition as a managed service',
+    code: `# Lite — single binary
+brew install stateletlab/statelet/statelet-lite
+
+# Enterprise — distributed
+brew install stateletlab/statelet/statelet
+# or: apt-get install statelet`,
   },
   {
     icon: Cloud,
     title: 'Kubernetes',
-    edition: 'Enterprise',
+    editions: ['Enterprise'],
     description: '3+ node distributed cluster',
     code: `kubectl apply -f k8s/namespace.yaml
 kubectl apply -f k8s/metadata.yaml
@@ -43,8 +47,8 @@ export default function GetStarted() {
             Deploy in minutes.
           </h2>
           <p className="text-text-muted text-lg max-w-[560px] mx-auto leading-relaxed">
-            Start with the Lite single binary from pip, Homebrew, apt, or dnf — or deploy the
-            Enterprise distributed cluster on Kubernetes. Same engine, same data format.
+            Install the Lite single binary or the Enterprise distributed edition from pip,
+            Homebrew, apt, or dnf — or deploy Enterprise on Kubernetes. Same engine, same data format.
           </p>
         </div>
 
@@ -63,13 +67,15 @@ export default function GetStarted() {
                     <opt.icon className="w-5 h-5 text-text" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-semibold text-text text-sm">{opt.title}</h3>
-                      <span className={`text-[10px] font-semibold uppercase tracking-[0.08em] px-2 py-0.5 rounded-md ${
-                        opt.edition === 'Lite' ? 'text-accent bg-accent/10' : 'text-purple bg-purple/10'
-                      }`}>
-                        {opt.edition}
-                      </span>
+                      {opt.editions.map(edition => (
+                        <span key={edition} className={`text-[10px] font-semibold uppercase tracking-[0.08em] px-2 py-0.5 rounded-md ${
+                          edition === 'Lite' ? 'text-accent bg-accent/10' : 'text-purple bg-purple/10'
+                        }`}>
+                          {edition}
+                        </span>
+                      ))}
                     </div>
                     <p className="text-xs text-text-light">{opt.description}</p>
                   </div>
