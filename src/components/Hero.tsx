@@ -7,7 +7,7 @@ const editions = {
     badge: 'Lite · Single Binary',
     badgeClass: 'text-accent bg-accent/10',
     install: 'pip install statelet-lite',
-    code: `from statelet_lite import AgentMemory
+    code: `from statelet import AgentMemory
 
 mem = AgentMemory("127.0.0.1:9379", agent_id="agent-1")
 
