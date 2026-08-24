@@ -9,6 +9,7 @@ const deployOptions = [
     description: 'Install either edition in one command',
     code: `# Lite — single binary
 pip install statelet-lite
+statelet-lite --fetch-models  # one-time: local embedding model
 
 # Enterprise — distributed
 pip install statelet`,
